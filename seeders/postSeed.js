@@ -18,3 +18,5 @@ async function seeder() {
   console.log('----Data Seeded----')
   process.exit()
 }
+
+seeder()
