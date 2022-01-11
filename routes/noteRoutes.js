@@ -23,3 +23,10 @@ router.delete('/notes/:id', passport.authenticate('jwt'), async function (req, r
   await Note.destroy({ where: { id: req.params.id } })
   res.sendStatus(200)
 })
+
+router.get('/notes/:id', passport.authenticate('jwt'), async function (req, res) {
+  const note = await Note.findAll({ where: { pid: req.params.id }, include: [User] })
+  res.json(note)
+})
+
+module.exports = router
