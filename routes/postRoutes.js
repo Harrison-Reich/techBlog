@@ -22,3 +22,11 @@ router.post('/posts', passport.authenticate('jwt'), async function (req, res) {
   })
   res.json(post)
 })
+
+// DELETE one post
+router.delete('/posts/:id', passport.authenticate('jwt'), async function (req, res) {
+  await Post.destroy({ where: { id: req.params.id } })
+  res.sendStatus(200)
+})
+
+module.exports = router
