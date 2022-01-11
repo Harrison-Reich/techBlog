@@ -12,3 +12,13 @@ router.get('/posts/:id', passport.authenticate('jwt'), async function (req, res)
   const posts = await Post.findOne({ where: { id: req.params.id }, include: [User, Note] })
   res.json(posts)
 })
+
+// POST one post
+router.post('/posts', passport.authenticate('jwt'), async function (req, res) {
+  const post = await Post.create({
+    body: req.body.body,
+    title: req.body.title,
+    uid: req.user.id
+  })
+  res.json(post)
+})
