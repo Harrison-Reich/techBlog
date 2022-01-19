@@ -98,7 +98,6 @@
         location.reload()
       })
 
-
       async function logoutUser() {
         localStorage.removeItem('token')
         location = '/login.html'
@@ -148,6 +147,16 @@
       }
 
       getAllNotes()
+
+      function timedOut() {
+        window.setTimeout(function () {
+          localStorage.removeItem('token')
+          location = '/login.html';
+        }, 300000);
+      }
+
+      timedOut()
+
     </script>
 </body>
 
