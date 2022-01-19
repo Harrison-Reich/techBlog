@@ -134,6 +134,18 @@
       logoutUser()
     })
 
+    function timedOut() {
+      window.setTimeout(function () {
+        localStorage.removeItem('token')
+        location = "/login.html";
+      },20000 );
+    }
+
+    timedOut()
+      if(localStorage.getItem('token') === null) {
+        location = '/login.html'
+      }
+
   </script>
 </body>
 
